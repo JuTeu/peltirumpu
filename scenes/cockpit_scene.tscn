@@ -1,0 +1,132 @@
+[gd_scene load_steps=15 format=3 uid="uid://dqx62dfurchh6"]
+
+[ext_resource type="Script" uid="uid://dq4nuxs8j7k7c" path="res://scripts/cockpit.gd" id="1_snf4n"]
+[ext_resource type="Script" uid="uid://c62yr4dfg8jsw" path="res://scripts/player.gd" id="1_ygba6"]
+[ext_resource type="Script" uid="uid://c0ijfetnahjav" path="res://scripts/screen.gd" id="2_ruw74"]
+[ext_resource type="PackedScene" uid="uid://cpmlyx0cxwri8" path="res://scenes/lever.tscn" id="3_eqbwn"]
+[ext_resource type="Script" uid="uid://c08rrrnnnrjmp" path="res://scripts/interactable_button.gd" id="5_pyve4"]
+
+[sub_resource type="Environment" id="Environment_ygba6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5ymrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ymrk"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygba6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruw74"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27ymm"]
+size = Vector3(0.24414063, 0.121032715, 0.2265625)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0juu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_beaq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03le6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="cockpit_scene" type="Node3D"]
+script = ExtResource("1_snf4n")
+
+[node name="Player" type="Node3D" parent="."]
+script = ExtResource("1_ygba6")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47319305, 0)
+environment = SubResource("Environment_ygba6")
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_5ymrk")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(4.3791504, 4.34375, 3.8027344)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5574341, 0)
+operation = 2
+size = Vector3(3.6767578, 2.7818604, 3.4763184)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6940877, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5133972, 0)
+radius = 0.067871094
+height = 0.97320557
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="OmniLight3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45723033, 0)
+cast_shadow = 0
+radius = 0.11306015
+material = SubResource("StandardMaterial3D_5ymrk")
+
+[node name="Screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.54571474, -1.2784462)
+mesh = SubResource("PlaneMesh_ygba6")
+surface_material_override/0 = SubResource("StandardMaterial3D_ruw74")
+script = ExtResource("2_ruw74")
+
+[node name="Lever" parent="." instance=ExtResource("3_eqbwn")]
+transform = Transform3D(0.60862297, 0.7934596, 0, -0.7934596, 0.60862297, 0, 0, 0, 1, -1.1623067, 0, -0.19263619)
+
+[node name="Lever2" parent="." instance=ExtResource("3_eqbwn")]
+transform = Transform3D(0.60862297, 0.7934596, 0, -0.7934596, 0.60862297, 0, 0, 0, 1, -1.1623067, 0, 0.1828317)
+
+[node name="InteractableButton" type="RigidBody3D" parent="."]
+transform = Transform3D(0.89481753, -0.44643208, 0, 0.44643208, 0.89481753, 0, 0, 0, 1, 0.8978511, 0, 0)
+collision_layer = 2
+freeze = true
+script = ExtResource("5_pyve4")
+metadata/_custom_type_script = "uid://c08rrrnnnrjmp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0743103, 0)
+shape = SubResource("BoxShape3D_27ymm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableButton"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_d0juu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="InteractableButton"]
+transform = Transform3D(0.2, 0, 0, 0, 0.06, 0, 0, 0, 0.2, 0, 0.039775163, 0)
+mesh = SubResource("CylinderMesh_beaq8")
+surface_material_override/0 = SubResource("StandardMaterial3D_03le6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -15.0
+offset_right = 1.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -1.0
+offset_right = 15.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)

@@ -1,0 +1,137 @@
+[gd_scene load_steps=13 format=3 uid="uid://du6d7k8rxxbhh"]
+
+[ext_resource type="Shader" uid="uid://60y1xf8r8au" path="res://shaders/building.gdshader" id="1_n8bkc"]
+[ext_resource type="Script" uid="uid://k56x1l16r6d0" path="res://scripts/building_hitbox.gd" id="2_uvy8r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tgcwe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o2h13"]
+render_priority = 0
+shader = ExtResource("1_n8bkc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n8bkc"]
+size = Vector3(0.6937256, 1, 0.70874023)
+
+[sub_resource type="Animation" id="Animation_uvy8r"]
+resource_name = "get_destroyed"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.09730041, 0, 0, 0.73333335, 1, 0.097, -0.9, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ejq8p"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.09730041, 0, 0)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area3D:collision_layer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rla3o"]
+_data = {
+&"RESET": SubResource("Animation_ejq8p"),
+&"get_destroyed": SubResource("Animation_uvy8r")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8bkc"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_uvy8r"]
+
+[sub_resource type="Curve" id="Curve_n8bkc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.2430632, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ejq8p"]
+colors = PackedColorArray(0.14, 0.14, 0.14, 1, 0.56, 0.56, 0.56, 1)
+
+[node name="Building" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0.09730041, 0, 0)
+mesh = SubResource("BoxMesh_tgcwe")
+surface_material_override/0 = SubResource("ShaderMaterial_o2h13")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_uvy8r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09246826, 0, 0.00061035156)
+shape = SubResource("BoxShape3D_n8bkc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rla3o")
+}
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08500552, -0.28315032, 0)
+material_override = SubResource("StandardMaterial3D_n8bkc")
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_uvy8r")
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.2, 0.3)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -3, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+scale_amount_min = 0.1
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_n8bkc")
+color_initial_ramp = SubResource("Gradient_ejq8p")

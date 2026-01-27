@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://daef5ljxcjmdt"]
+
+[ext_resource type="PackedScene" uid="uid://dqx62dfurchh6" path="res://scenes/cockpit_scene.tscn" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://c4gemka6lcsjj" path="res://scenes/kaiju_scene.tscn" id="2_pw63i"]
+
+[node name="MainScene" type="Node3D"]
+
+[node name="cockpit_scene" parent="." instance=ExtResource("1_w2twt")]
+
+[node name="KaijuSubViewport" type="SubViewport" parent="."]
+render_target_update_mode = 1
+
+[node name="Kaiju Scene" parent="KaijuSubViewport" instance=ExtResource("2_pw63i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.170706, 0)

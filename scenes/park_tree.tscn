@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckh20en0yfrya"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fohrr"]
+albedo_color = Color(0.34901962, 0.23529412, 0.043137256, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vg3v"]
+albedo_color = Color(0.0816, 0.68, 0.13146663, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D"]
+radius = 0.01171875
+height = 0.14501953
+material = SubResource("StandardMaterial3D_fohrr")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.052119732, 0)
+radius = 0.05918019
+material = SubResource("StandardMaterial3D_5vg3v")
