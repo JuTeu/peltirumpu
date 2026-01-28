@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqx62dfurchh6"]
+[gd_scene load_steps=27 format=3 uid="uid://dqx62dfurchh6"]
 
 [ext_resource type="Script" uid="uid://dq4nuxs8j7k7c" path="res://scripts/cockpit.gd" id="1_snf4n"]
 [ext_resource type="Script" uid="uid://c62yr4dfg8jsw" path="res://scripts/player.gd" id="1_ygba6"]
@@ -39,6 +39,32 @@ size = Vector3(0.24414063, 0.121032715, 0.2265625)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03le6"]
 albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_beaq8"]
+resource_name = "pressed"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.039775163, 0, 0.1, 1, 0, 0.01, 0, 0.23333333, 1, 0, 0.039775163, 0)
+
+[sub_resource type="Animation" id="Animation_03le6"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.039775163, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkelo"]
+_data = {
+&"RESET": SubResource("Animation_03le6"),
+&"pressed": SubResource("Animation_beaq8")
+}
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_beaq8"]
 radius = 0.10813699
@@ -226,6 +252,11 @@ mesh = SubResource("BoxMesh_d0juu")
 transform = Transform3D(0.2, 0, 0, 0, 0.06, 0, 0, 0, 0.2, 0, 0.039775163, 0)
 mesh = SubResource("CylinderMesh_beaq8")
 surface_material_override/0 = SubResource("StandardMaterial3D_03le6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableButton"]
+libraries = {
+&"": SubResource("AnimationLibrary_rkelo")
+}
 
 [node name="FuseBox" type="Node3D" parent="." node_paths=PackedStringArray("right_fuse", "middle_fuse", "left_fuse")]
 transform = Transform3D(0.9544697, -0.29830793, 0, 0.29830793, 0.9544697, 0, 0, 0, 1, 0.9439615, 0.7334975, 0)
