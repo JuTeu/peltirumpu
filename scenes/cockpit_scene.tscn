@@ -1,10 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqx62dfurchh6"]
+[gd_scene load_steps=24 format=3 uid="uid://dqx62dfurchh6"]
 
 [ext_resource type="Script" uid="uid://dq4nuxs8j7k7c" path="res://scripts/cockpit.gd" id="1_snf4n"]
 [ext_resource type="Script" uid="uid://c62yr4dfg8jsw" path="res://scripts/player.gd" id="1_ygba6"]
+[ext_resource type="Script" uid="uid://bl760qads1l1m" path="res://scripts/drawer_box.gd" id="2_d0juu"]
 [ext_resource type="Script" uid="uid://c0ijfetnahjav" path="res://scripts/screen.gd" id="2_ruw74"]
 [ext_resource type="PackedScene" uid="uid://cpmlyx0cxwri8" path="res://scenes/lever.tscn" id="3_eqbwn"]
 [ext_resource type="Script" uid="uid://c08rrrnnnrjmp" path="res://scripts/interactable_button.gd" id="5_pyve4"]
+[ext_resource type="PackedScene" uid="uid://bjb3bj612fto2" path="res://scenes/fuse.tscn" id="6_27ymm"]
+[ext_resource type="Script" uid="uid://djutr66ov0ivo" path="res://scripts/fuse_box.gd" id="7_beaq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beaq8"]
+size = Vector3(0.8076172, 0.2593994, 0.041259766)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03le6"]
+size = Vector3(0.037857056, 0.2578125, 0.42114258)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0juu"]
+size = Vector3(0.7207031, 0.005783081, 0.49804688)
 
 [sub_resource type="Environment" id="Environment_ygba6"]
 
@@ -28,8 +40,118 @@ size = Vector3(0.24414063, 0.121032715, 0.2265625)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03le6"]
 albedo_color = Color(1, 0, 0, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_beaq8"]
+radius = 0.10813699
+
+[sub_resource type="QuadMesh" id="QuadMesh_pyve4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27ymm"]
+albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+
 [node name="cockpit_scene" type="Node3D"]
 script = ExtResource("1_snf4n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 5.0
+offset_right = 21.0
+offset_bottom = 35.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 35.0
+offset_bottom = 21.0
+color = Color(0, 0, 0, 1)
+
+[node name="FuseDrawer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0034367442, 0.9715605)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FuseDrawer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3309682, 0)
+use_collision = true
+size = Vector3(1, 1, 0.50097656)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FuseDrawer/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16503906, 0)
+operation = 2
+size = Vector3(0.8964844, 0.6699219, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FuseDrawer/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3309682, 0)
+operation = 2
+size = Vector3(0.8066406, 0.2607422, 1)
+
+[node name="SliderJoint3D" type="SliderJoint3D" parent="FuseDrawer"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.0034367442, -0.039922714)
+node_b = NodePath("../DrawerBox")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
+
+[node name="DrawerBox" type="RigidBody3D" parent="FuseDrawer"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("2_d0juu")
+metadata/_custom_type_script = "uid://bl760qads1l1m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015258789, -0.23083496)
+shape = SubResource("BoxShape3D_beaq8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3822403, -0.0009765625, 0.040161133)
+shape = SubResource("BoxShape3D_03le6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382, -0.001, 0.04)
+shape = SubResource("BoxShape3D_03le6")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11526838, 0)
+shape = SubResource("BoxShape3D_d0juu")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002, 0.231)
+shape = SubResource("BoxShape3D_beaq8")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0047302246)
+operation = 1
+inner_radius = 0.28528556
+outer_radius = 0.32979846
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FuseDrawer/DrawerBox/CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004058838, -0.36904907)
+operation = 1
+size = Vector3(1, 0.09234619, 0.2524414)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FuseDrawer/DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0047302246)
+size = Vector3(0.80859375, 0.2536621, 0.49554443)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FuseDrawer/DrawerBox/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026550293, 0)
+operation = 2
+size = Vector3(0.7402344, 0.20056152, 0.4267578)
 
 [node name="Player" type="Node3D" parent="."]
 script = ExtResource("1_ygba6")
@@ -39,13 +161,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47319305, 0)
 environment = SubResource("Environment_ygba6")
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
-target_position = Vector3(0, 0, -2)
+target_position = Vector3(0, 0, -3)
 collision_mask = 2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2376659)
+visible = false
+radius = 0.025925996
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_5ymrk")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
 size = Vector3(4.3791504, 4.34375, 3.8027344)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
@@ -68,7 +196,7 @@ radius = 0.11306015
 material = SubResource("StandardMaterial3D_5ymrk")
 
 [node name="Screen" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.54571474, -1.2784462)
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.54571474, -1.2784462)
 mesh = SubResource("PlaneMesh_ygba6")
 surface_material_override/0 = SubResource("StandardMaterial3D_ruw74")
 script = ExtResource("2_ruw74")
@@ -99,34 +227,110 @@ transform = Transform3D(0.2, 0, 0, 0, 0.06, 0, 0, 0, 0.2, 0, 0.039775163, 0)
 mesh = SubResource("CylinderMesh_beaq8")
 surface_material_override/0 = SubResource("StandardMaterial3D_03le6")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="FuseBox" type="Node3D" parent="." node_paths=PackedStringArray("right_fuse", "middle_fuse", "left_fuse")]
+transform = Transform3D(0.9544697, -0.29830793, 0, 0.29830793, 0.9544697, 0, 0, 0, 1, 0.9439615, 0.7334975, 0)
+script = ExtResource("7_beaq8")
+right_fuse = NodePath("../Fuse2")
+middle_fuse = NodePath("../Fuse")
+left_fuse = NodePath("../Fuse3")
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Area3DMiddleFuse" type="Area3D" parent="FuseBox"]
+transform = Transform3D(0.9544697, 0.29830793, 0, -0.29830793, 0.9544697, 0, 0, 0, 1, -0.07280922, 0.022755623, 0)
+collision_layer = 0
+collision_mask = 4
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -15.0
-offset_right = 1.0
-offset_bottom = 15.0
-color = Color(0, 0, 0, 1)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FuseBox/Area3DMiddleFuse"]
+shape = SubResource("SphereShape3D_beaq8")
+debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = -15.0
-offset_top = -1.0
-offset_right = 15.0
-offset_bottom = 1.0
-color = Color(0, 0, 0, 1)
+[node name="Area3DLeftFuse" type="Area3D" parent="FuseBox"]
+transform = Transform3D(0.9544697, 0.29830793, 0, -0.29830793, 0.9544697, 0, 0, 0, 1, -0.07280922, 0.022755653, -0.12240562)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FuseBox/Area3DLeftFuse"]
+shape = SubResource("SphereShape3D_beaq8")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="Area3DRightFuse" type="Area3D" parent="FuseBox"]
+transform = Transform3D(0.9544697, 0.29830793, 0, -0.29830793, 0.9544697, 0, 0, 0, 1, -0.073, 0.023, 0.122)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FuseBox/Area3DRightFuse"]
+shape = SubResource("SphereShape3D_beaq8")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FuseBox"]
+size = Vector3(0.10449219, 0.23632813, 0.4111328)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="FuseBox/CSGBox3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07879639, 0, 0)
+operation = 2
+radius = 0.044433594
+height = 0.13903809
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="FuseBox/CSGBox3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07879639, 0, -0.12099203)
+operation = 2
+radius = 0.044433594
+height = 0.13903809
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="FuseBox/CSGBox3D"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.079, 0, 0.121)
+operation = 2
+radius = 0.044433594
+height = 0.13903809
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FuseBox"]
+transform = Transform3D(-1.635988e-08, 0, -1, 0, 0.20133466, 0, 0.37427044, 0, -4.371139e-08, -0.012887955, 0, 0)
+mesh = SubResource("QuadMesh_pyve4")
+surface_material_override/0 = SubResource("StandardMaterial3D_27ymm")
+
+[node name="Fuse" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.3422334, -0.93961495, 0, 0.93961495, -0.3422334, 0, 0, 0, 1, 0.8703488, 0.70707333, 0)
+freeze = true
+interactable = false
+
+[node name="Fuse2" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.3422334, -0.93961495, 0, 0.93961495, -0.3422334, 0, 0, 0, 1, 0.87, 0.707, 0.124)
+freeze = true
+interactable = false
+
+[node name="Fuse3" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.3422334, -0.93961495, 0, 0.93961495, -0.3422334, 0, 0, 0, 1, 0.8703488, 0.70707333, -0.123785846)
+freeze = true
+interactable = false
+
+[node name="Fuse4" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.032345578, 0.83136255)
+
+[node name="Fuse5" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.03122969, -0.032345578, 0.83136255)
+
+[node name="Fuse6" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.09340434, -0.032345578, 0.9070859)
+
+[node name="Fuse7" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.25162697, -0.032345578, 0.83136255)
+
+[node name="Fuse8" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.032345578, 1.1203835)
+
+[node name="Fuse13" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.032345578, 1.0198112)
+
+[node name="Fuse14" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.16460791, 0.021234974, 0.90752804)
+
+[node name="Fuse9" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.2944346, -0.032345578, 0.9923312)
+
+[node name="Fuse12" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.06529671, -0.032345578, 0.9923312)
+
+[node name="Fuse10" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.09310794, -0.032345578, 1.106016)
+
+[node name="Fuse11" parent="." instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.31009412, -0.026339427, 1.106016)

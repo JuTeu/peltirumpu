@@ -15,7 +15,7 @@ float random(vec2 st) {
 
 vec3 get_building_color()
 {
-	vec2 sampled = vec2(ceil(world_position.x), ceil(world_position.z));
+	vec2 sampled = vec2(ceil(world_position.x * 1.7), ceil(world_position.z * 1.7));
 	float rand = random(sampled);
 		if (rand > 0.7)
 		{
