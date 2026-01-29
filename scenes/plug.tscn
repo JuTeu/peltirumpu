@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://d28y7p3mcdo41"]
+
+[ext_resource type="Script" uid="uid://cbi2rln8a5laf" path="res://scripts/plug.gd" id="1_eyfas"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkelo"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5lyat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xm8iy"]
+albedo_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rkelo"]
+radius = 0.05
+
+[node name="Plug" type="RigidBody3D"]
+collision_layer = 2
+freeze = true
+script = ExtResource("1_eyfas")
+metadata/_custom_type_script = "uid://cbi2rln8a5laf"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rkelo")
+debug_color = Color(0, 0.85000014, 1, 1)
+
+[node name="LineModel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5lyat")
+surface_material_override/0 = SubResource("StandardMaterial3D_xm8iy")
+
+[node name="PlugModel" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlugModel"]
+transform = Transform3D(0.07, 0, 0, 0, -4.3711387e-10, -0.07, 0, 0.01, -3.059797e-09, 0, 0, 0)
+mesh = SubResource("CylinderMesh_5lyat")
+surface_material_override/0 = SubResource("StandardMaterial3D_xm8iy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PlugModel"]
+transform = Transform3D(0.015, 0, 0, 0, -8.7422775e-10, -0.015, 0, 0.02, -6.556708e-10, -0.017, 0, 0.02)
+mesh = SubResource("CylinderMesh_5lyat")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="PlugModel"]
+transform = Transform3D(0.015, 0, 0, 0, -8.7422775e-10, -0.015, 0, 0.02, -6.556708e-10, 0.017, 0, 0.02)
+mesh = SubResource("CylinderMesh_5lyat")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_rkelo")
+target_position = Vector3(0, 0, 0)
+collision_mask = 8
+collide_with_areas = true

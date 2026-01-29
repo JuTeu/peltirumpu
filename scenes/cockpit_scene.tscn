@@ -1,24 +1,19 @@
-[gd_scene load_steps=27 format=3 uid="uid://dqx62dfurchh6"]
+[gd_scene load_steps=30 format=3 uid="uid://dqx62dfurchh6"]
 
 [ext_resource type="Script" uid="uid://dq4nuxs8j7k7c" path="res://scripts/cockpit.gd" id="1_snf4n"]
 [ext_resource type="Script" uid="uid://c62yr4dfg8jsw" path="res://scripts/player.gd" id="1_ygba6"]
-[ext_resource type="Script" uid="uid://bl760qads1l1m" path="res://scripts/drawer_box.gd" id="2_d0juu"]
+[ext_resource type="PackedScene" uid="uid://bpveeo858git0" path="res://scenes/fuse_drawer.tscn" id="2_beaq8"]
 [ext_resource type="Script" uid="uid://c0ijfetnahjav" path="res://scripts/screen.gd" id="2_ruw74"]
+[ext_resource type="Script" uid="uid://dn58cqtcix2hl" path="res://scripts/light_bulb.gd" id="3_5aw4l"]
+[ext_resource type="Environment" uid="uid://c1wdyqqo20o84" path="res://scenes/cockpit_scene.tres" id="3_ae7ma"]
 [ext_resource type="PackedScene" uid="uid://cpmlyx0cxwri8" path="res://scenes/lever.tscn" id="3_eqbwn"]
-[ext_resource type="Script" uid="uid://c08rrrnnnrjmp" path="res://scripts/interactable_button.gd" id="5_pyve4"]
+[ext_resource type="PackedScene" uid="uid://vvw8tjenba8b" path="res://scenes/interactable_button.tscn" id="6_03le6"]
 [ext_resource type="PackedScene" uid="uid://bjb3bj612fto2" path="res://scenes/fuse.tscn" id="6_27ymm"]
 [ext_resource type="Script" uid="uid://djutr66ov0ivo" path="res://scripts/fuse_box.gd" id="7_beaq8"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_beaq8"]
-size = Vector3(0.8076172, 0.2593994, 0.041259766)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_03le6"]
-size = Vector3(0.037857056, 0.2578125, 0.42114258)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d0juu"]
-size = Vector3(0.7207031, 0.005783081, 0.49804688)
-
-[sub_resource type="Environment" id="Environment_ygba6"]
+[ext_resource type="PackedScene" uid="uid://cieb8xavlclex" path="res://scenes/status_light.tscn" id="9_03le6"]
+[ext_resource type="PackedScene" uid="uid://ckvxdd0bvkgdo" path="res://scenes/plug_socket.tscn" id="10_5lyat"]
+[ext_resource type="PackedScene" uid="uid://d2mbvf2di7gxp" path="res://scenes/generator_plug.tscn" id="10_xm8iy"]
+[ext_resource type="PackedScene" uid="uid://d28y7p3mcdo41" path="res://scenes/plug.tscn" id="11_5lyat"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5ymrk"]
 
@@ -26,45 +21,137 @@ size = Vector3(0.7207031, 0.005783081, 0.49804688)
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5aw4l"]
+albedo_color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+
+[sub_resource type="Animation" id="Animation_5aw4l"]
+resource_name = "power_on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:omni_range")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCylinder3D/CSGSphere3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCylinder3D/CSGSphere3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ae7ma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:omni_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCylinder3D/CSGSphere3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCylinder3D/CSGSphere3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4dgta"]
+resource_name = "power_off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:omni_range")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCylinder3D/CSGSphere3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCylinder3D/CSGSphere3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4dgta"]
+_data = {
+&"RESET": SubResource("Animation_ae7ma"),
+&"power_off": SubResource("Animation_4dgta"),
+&"power_on": SubResource("Animation_5aw4l")
+}
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygba6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruw74"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_27ymm"]
-size = Vector3(0.24414063, 0.121032715, 0.2265625)
-
-[sub_resource type="BoxMesh" id="BoxMesh_d0juu"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_beaq8"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03le6"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_beaq8"]
-resource_name = "pressed"
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.039775163, 0, 0.1, 1, 0, 0.01, 0, 0.23333333, 1, 0, 0.039775163, 0)
-
-[sub_resource type="Animation" id="Animation_03le6"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D2")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.039775163, 0)
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkelo"]
-_data = {
-&"RESET": SubResource("Animation_03le6"),
-&"pressed": SubResource("Animation_beaq8")
-}
+emission_enabled = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_beaq8"]
 radius = 0.10813699
@@ -73,6 +160,15 @@ radius = 0.10813699
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27ymm"]
 albedo_color = Color(0.15127608, 0.15127608, 0.15127608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_beaq8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xm8iy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xm8iy"]
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="cockpit_scene" type="Node3D"]
 script = ExtResource("1_snf4n")
@@ -109,93 +205,21 @@ offset_right = 35.0
 offset_bottom = 21.0
 color = Color(0, 0, 0, 1)
 
-[node name="FuseDrawer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0034367442, 0.9715605)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="FuseDrawer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3309682, 0)
-use_collision = true
-size = Vector3(1, 1, 0.50097656)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="FuseDrawer/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16503906, 0)
-operation = 2
-size = Vector3(0.8964844, 0.6699219, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="FuseDrawer/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3309682, 0)
-operation = 2
-size = Vector3(0.8066406, 0.2607422, 1)
-
-[node name="SliderJoint3D" type="SliderJoint3D" parent="FuseDrawer"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.0034367442, -0.039922714)
-node_b = NodePath("../DrawerBox")
-linear_limit/upper_distance = 0.5
-linear_limit/lower_distance = 0.0
-
-[node name="DrawerBox" type="RigidBody3D" parent="FuseDrawer"]
-collision_layer = 3
-collision_mask = 0
-script = ExtResource("2_d0juu")
-metadata/_custom_type_script = "uid://bl760qads1l1m"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015258789, -0.23083496)
-shape = SubResource("BoxShape3D_beaq8")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3822403, -0.0009765625, 0.040161133)
-shape = SubResource("BoxShape3D_03le6")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382, -0.001, 0.04)
-shape = SubResource("BoxShape3D_03le6")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11526838, 0)
-shape = SubResource("BoxShape3D_d0juu")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002, 0.231)
-shape = SubResource("BoxShape3D_beaq8")
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0047302246)
-operation = 1
-inner_radius = 0.28528556
-outer_radius = 0.32979846
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="FuseDrawer/DrawerBox/CSGTorus3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004058838, -0.36904907)
-operation = 1
-size = Vector3(1, 0.09234619, 0.2524414)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="FuseDrawer/DrawerBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0047302246)
-size = Vector3(0.80859375, 0.2536621, 0.49554443)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="FuseDrawer/DrawerBox/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026550293, 0)
-operation = 2
-size = Vector3(0.7402344, 0.20056152, 0.4267578)
-
 [node name="Player" type="Node3D" parent="."]
 script = ExtResource("1_ygba6")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47319305, 0)
-environment = SubResource("Environment_ygba6")
+environment = ExtResource("3_ae7ma")
+far = 6.96
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D"]
-target_position = Vector3(0, 0, -3)
+target_position = Vector3(0, 0, -3.5)
 collision_mask = 2
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Player/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2376659)
-visible = false
-radius = 0.025925996
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_5ymrk")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -207,25 +231,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5574341, 0)
 operation = 2
 size = Vector3(3.6767578, 2.7818604, 3.4763184)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="LightBulb" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6940877, 0)
+script = ExtResource("3_5aw4l")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="OmniLight3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LightBulb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5133972, 0)
+cast_shadow = 0
 radius = 0.067871094
 height = 0.97320557
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="OmniLight3D/CSGCylinder3D"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LightBulb/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45723033, 0)
 cast_shadow = 0
 radius = 0.11306015
 material = SubResource("StandardMaterial3D_5ymrk")
 
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="LightBulb/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45723033, 0)
+visible = false
+cast_shadow = 0
+radius = 0.11306015
+material = SubResource("StandardMaterial3D_5aw4l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LightBulb"]
+libraries = {
+&"": SubResource("AnimationLibrary_4dgta")
+}
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52339256, -1.7297056)
+size = Vector3(1.1, 0.89521486, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020693183, 0)
+operation = 2
+size = Vector3(1, 0.74401855, 1)
+
 [node name="Screen" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.54571474, -1.2784462)
+transform = Transform3D(0.5, 0, 0, 0, -5.4639235e-09, -0.375, 0, 0.125, -1.639177e-08, 0, 0.54571474, -1.2784462)
 mesh = SubResource("PlaneMesh_ygba6")
 surface_material_override/0 = SubResource("StandardMaterial3D_ruw74")
 script = ExtResource("2_ruw74")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4368658, -0.48554906, 0)
+use_collision = true
+size = Vector3(1, 1.3320313, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D3"]
+transform = Transform3D(0.62586904, 0.7799282, 0, -0.7799282, 0.62586904, 0, 0, 0, 1, 0.6723231, 0.45878595, 0.014341414)
+operation = 2
+size = Vector3(1, 0.57714844, 1.0926514)
 
 [node name="Lever" parent="." instance=ExtResource("3_eqbwn")]
 transform = Transform3D(0.60862297, 0.7934596, 0, -0.7934596, 0.60862297, 0, 0, 0, 1, -1.1623067, 0, -0.19263619)
@@ -233,30 +290,8 @@ transform = Transform3D(0.60862297, 0.7934596, 0, -0.7934596, 0.60862297, 0, 0, 
 [node name="Lever2" parent="." instance=ExtResource("3_eqbwn")]
 transform = Transform3D(0.60862297, 0.7934596, 0, -0.7934596, 0.60862297, 0, 0, 0, 1, -1.1623067, 0, 0.1828317)
 
-[node name="InteractableButton" type="RigidBody3D" parent="."]
+[node name="InteractableButton" parent="." instance=ExtResource("6_03le6")]
 transform = Transform3D(0.89481753, -0.44643208, 0, 0.44643208, 0.89481753, 0, 0, 0, 1, 0.8978511, 0, 0)
-collision_layer = 2
-freeze = true
-script = ExtResource("5_pyve4")
-metadata/_custom_type_script = "uid://c08rrrnnnrjmp"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableButton"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0743103, 0)
-shape = SubResource("BoxShape3D_27ymm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableButton"]
-transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
-mesh = SubResource("BoxMesh_d0juu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="InteractableButton"]
-transform = Transform3D(0.2, 0, 0, 0, 0.06, 0, 0, 0, 0.2, 0, 0.039775163, 0)
-mesh = SubResource("CylinderMesh_beaq8")
-surface_material_override/0 = SubResource("StandardMaterial3D_03le6")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableButton"]
-libraries = {
-&"": SubResource("AnimationLibrary_rkelo")
-}
 
 [node name="FuseBox" type="Node3D" parent="." node_paths=PackedStringArray("right_fuse", "middle_fuse", "left_fuse")]
 transform = Transform3D(0.9544697, -0.29830793, 0, 0.29830793, 0.9544697, 0, 0, 0, 1, 0.9439615, 0.7334975, 0)
@@ -333,35 +368,181 @@ transform = Transform3D(-0.3422334, -0.93961495, 0, 0.93961495, -0.3422334, 0, 0
 freeze = true
 interactable = false
 
-[node name="Fuse4" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.032345578, 0.83136255)
+[node name="FuseDrawer" parent="." instance=ExtResource("2_beaq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16431606, 0.9715605)
 
-[node name="Fuse5" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.03122969, -0.032345578, 0.83136255)
+[node name="FusesInDrawer" type="Node3D" parent="."]
 
-[node name="Fuse6" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.09340434, -0.032345578, 0.9070859)
+[node name="Fuse4" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.19322489, 0.83136255)
 
-[node name="Fuse7" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.25162697, -0.032345578, 0.83136255)
+[node name="Fuse5" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.03122969, -0.19322489, 0.83136255)
 
-[node name="Fuse8" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.032345578, 1.1203835)
+[node name="Fuse6" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.09340434, -0.19322489, 0.9070859)
 
-[node name="Fuse13" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.032345578, 1.0198112)
+[node name="Fuse7" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.25162697, -0.19322489, 0.83136255)
 
-[node name="Fuse14" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.16460791, 0.021234974, 0.90752804)
+[node name="Fuse8" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.19322489, 1.1203835)
 
-[node name="Fuse9" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.2944346, -0.032345578, 0.9923312)
+[node name="Fuse13" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.20347774, -0.19322489, 1.0198112)
 
-[node name="Fuse12" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.06529671, -0.032345578, 0.9923312)
+[node name="Fuse14" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.16460791, -0.13964434, 0.90752804)
 
-[node name="Fuse10" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.09310794, -0.032345578, 1.106016)
+[node name="Fuse9" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.2944346, -0.19322489, 0.9923312)
 
-[node name="Fuse11" parent="." instance=ExtResource("6_27ymm")]
-transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.31009412, -0.026339427, 1.106016)
+[node name="Fuse12" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.06529671, -0.19322489, 0.9923312)
+
+[node name="Fuse10" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.09310794, -0.19322489, 1.106016)
+
+[node name="Fuse11" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.31009412, -0.18721874, 1.106016)
+
+[node name="Fuse15" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.14379503, -0.14848273, 0.81539184)
+
+[node name="Fuse16" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.0909124, -0.14848273, 0.81539184)
+
+[node name="Fuse17" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.03372163, -0.14848273, 0.8911152)
+
+[node name="Fuse18" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.31130967, -0.14848273, 0.81539184)
+
+[node name="Fuse19" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.14379503, -0.14848273, 1.1044128)
+
+[node name="Fuse20" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.14379503, -0.14848273, 1.0038404)
+
+[node name="Fuse21" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.22429062, -0.09490217, 0.89155734)
+
+[node name="Fuse22" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, 0.034095317, -0.14848273, 1.059011)
+
+[node name="Fuse23" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.12497942, -0.14848273, 0.9763605)
+
+[node name="Fuse24" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
+transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.15279065, -0.14848273, 1.0900453)
+
+[node name="SwitchBoard" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1528803, 0.7064403, 0.029495522)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SwitchBoard"]
+transform = Transform3D(0.08252666, 0, 0, 0, 0.5376875, 0, 0, 0, 0.6725486, 0, 0, 0)
+mesh = SubResource("BoxMesh_beaq8")
+
+[node name="StatusLightMovement" parent="." instance=ExtResource("9_03le6")]
+transform = Transform3D(0.62586904, 0.7799282, 0, -0.7799282, 0.62586904, 0, 0, 0, 1, -0.98116076, -0.15908797, -0.37327462)
+
+[node name="StatusLightGun" parent="." instance=ExtResource("9_03le6")]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 0.9574412, 0.116066724, 0.11505374)
+
+[node name="StatusLightTV" parent="." instance=ExtResource("9_03le6")]
+transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, 0.4961182, 0.11032443, -1.2206091)
+
+[node name="GeneratorPlug" parent="." instance=ExtResource("10_xm8iy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0838261, 0.83639073, 0.24993466)
+
+[node name="GeneratorPlug2" parent="." instance=ExtResource("10_xm8iy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0838261, 0.83639073, 0.1213309)
+
+[node name="GeneratorPlug3" parent="." instance=ExtResource("10_xm8iy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0838261, 0.83639073, -0.006123051)
+
+[node name="MainGeneratorPlug" type="Node3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0966208, 0.8484799, -0.19523126)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainGeneratorPlug"]
+transform = Transform3D(0.12246928, 0, 0, 0, 0.17053035, 0, 0, 0, 0.02190708, 0, 0, 0)
+mesh = SubResource("BoxMesh_xm8iy")
+
+[node name="Label3D" type="Label3D" parent="MainGeneratorPlug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04359758, 0.013367921)
+pixel_size = 0.0005
+text = "MAIN
+GENERATOR
+STATUS:"
+
+[node name="OK" type="Label3D" parent="MainGeneratorPlug"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016751885, 0.013367891)
+pixel_size = 0.0017
+modulate = Color(0.16078432, 1, 0.20392157, 1)
+text = "OK"
+
+[node name="Plug" parent="MainGeneratorPlug" instance=ExtResource("11_5lyat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052669168, -0.077678084, 0.039229035)
+
+[node name="Plug2" parent="MainGeneratorPlug" instance=ExtResource("11_5lyat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04813701, -0.077678084, 0.039229035)
+
+[node name="TracksPlugSocket" parent="." instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, 0.2663612)
+
+[node name="LightsPlugSocket" parent="." instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, 0.14179093)
+
+[node name="TVPlugSocket" parent="." instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, 0.01671964)
+
+[node name="GunPlugSocket1" parent="." instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, -0.10367145)
+
+[node name="GunPlugSocket2" parent="." instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, -0.22105417)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44481477, 0.2656741)
+polygon = PackedVector2Array(-0.052, -0.01, -0.02, 0.035, 0.02, 0.035, 0.052, -0.01)
+depth = 0.01
+material = SubResource("StandardMaterial3D_xm8iy")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CSGPolygon3D"]
+transform = Transform3D(1, 8.929842e-09, 9.218617e-10, -8.929841e-09, 0.9789102, 0.20429102, 9.218688e-10, -0.20429102, 0.9789102, 0.1695514, 0.48885527, 0.46934718)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.284
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44564015, 0.14125441)
+polygon = PackedVector2Array(-0.024750859, 0.018526852, -0.013595626, 0.036034554, 0.013926506, 0.03520739, 0.022262387, 0.016837925, 0.010001585, 0.0023688376, 0.010007918, -0.017133862, -0.013123989, -0.016655833, -0.0126114935, 0.0028259754)
+depth = 0.01
+material = SubResource("StandardMaterial3D_xm8iy")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGPolygon3D2"]
+transform = Transform3D(1, -4.371139e-08, 4.371139e-08, 4.371139e-08, -4.371139e-08, -1, 4.371139e-08, 1, -4.3711385e-08, 0, 0.018100083, -0.015271425)
+operation = 2
+radius = 0.013671875
+height = 0.04346289
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44481477, 0.14497632)
+polygon = PackedVector2Array(0.0009431839, 0.0033834875, -0.0025354028, 0.01549232, 0.00873965, 0.0150714815, 0.0047786087, 0.0026453435)
+depth = 0.01
+material = SubResource("StandardMaterial3D_xm8iy")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44564015, 0.015863076)
+polygon = PackedVector2Array(-0.01192883, 0.03595531, 0.0012139762, 0.025279462, 0.013926506, 0.03520739, 0.0036895787, 0.022954881, 0.024673726, 0.022698015, 0.024779964, -0.017197043, -0.023101278, -0.017435849, -0.022917792, 0.02219057, -0.0025096443, 0.022107601)
+depth = 0.01
+material = SubResource("StandardMaterial3D_xm8iy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGPolygon3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002646069, 0.00525257, 0)
+size = Vector3(0.03100586, 0.021728516, 0.01)
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0973401, 0.44791844, -0.15673466)
+polygon = PackedVector2Array(-0.05247488, 0.0156959, -0.057424195, 0.03258705, 0.06006059, 0.027725697, 0.0783727, 0.016936779, 0.07310012, -0.004944265, 0.044477984, 0.008811504, 0.039592147, -0.0102470815, 0.027173206, -0.010857761, 0.028777763, 0.010986507, 0.012752414, 0.011152804, 0.0010525286, -0.009995818, -0.01526022, -0.007283509, -0.009255871, 0.011381209)
+depth = 0.01
+material = SubResource("StandardMaterial3D_xm8iy")

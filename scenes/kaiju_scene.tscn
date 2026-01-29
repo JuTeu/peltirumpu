@@ -156,6 +156,7 @@ environment = SubResource("Environment_bq2hb")
 transform = Transform3D(-0.9971851, -0.06493341, 0.037489317, 0, 0.49999997, 0.86602545, -0.07497864, 0.8635877, -0.49859253, 0, 0, 0)
 light_energy = 0.7
 shadow_enabled = true
+directional_shadow_max_distance = 10.0
 
 [node name="CSGBox3Dwater" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13042927, 0)

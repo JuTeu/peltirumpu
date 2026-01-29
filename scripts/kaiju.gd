@@ -21,13 +21,13 @@ func damaged(amount: float) -> void:
 func _process(delta: float) -> void:
 	
 	if _health <= 0.0:
-		model.rotation = Vector3(0, model.rotation.y, PI / 2.0)
+		model.rotation = Vector3(0, 0, PI / 2.0)
 		return
 	
 	for i in cast_for_punchables.get_collision_count():
 		var collider := cast_for_punchables.get_collider(i)
 		if collider is Damageable:
-			model.rotation = Vector3(0, model.rotation.y, sin(Time.get_unix_time_from_system() * 10.0) * 0.3)
+			model.rotation = Vector3(0, 0, sin(Time.get_unix_time_from_system() * 10.0) * 0.3)
 			if _punch_cooldown > 0.0:
 				_punch_cooldown -= delta
 				return
@@ -54,7 +54,8 @@ func _process(delta: float) -> void:
 	move_vector = move_vector.rotated(Vector3.UP, _rotation)
 	global_position += move_vector * delta * 0.3
 	
-	model.rotation = Vector3(0.0, _rotation + sin(Time.get_unix_time_from_system() * 10.0) * 0.3, 0.0)
+	rotation = Vector3(0.0, _rotation, 0.0)
+	model.rotation = Vector3(0.0, sin(Time.get_unix_time_from_system() * 10.0) * 0.3, 0.0)
 	#print(_target.get_parent_node_3d().name)
 	#print(global_position.distance_to(_target.global_position))
 	

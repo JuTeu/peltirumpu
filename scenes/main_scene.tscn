@@ -8,6 +8,7 @@
 [node name="cockpit_scene" parent="." instance=ExtResource("1_w2twt")]
 
 [node name="KaijuSubViewport" type="SubViewport" parent="."]
+size = Vector2i(320, 240)
 render_target_update_mode = 1
 
 [node name="Kaiju Scene" parent="KaijuSubViewport" instance=ExtResource("2_pw63i")]

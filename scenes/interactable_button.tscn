@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://vvw8tjenba8b"]
+
+[ext_resource type="Script" uid="uid://c08rrrnnnrjmp" path="res://scripts/interactable_button.gd" id="1_42tfq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27ymm"]
+size = Vector3(0.24414063, 0.121032715, 0.2265625)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0juu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_beaq8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03le6"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_03le6"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.039775163, 0)
+
+[sub_resource type="Animation" id="Animation_beaq8"]
+resource_name = "pressed"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D2")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.039775163, 0, 0.1, 1, 0, 0.01, 0, 0.23333333, 1, 0, 0.039775163, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkelo"]
+_data = {
+&"RESET": SubResource("Animation_03le6"),
+&"pressed": SubResource("Animation_beaq8")
+}
+
+[node name="InteractableButton" type="RigidBody3D"]
+transform = Transform3D(0.89481753, -0.44643208, 0, 0.44643208, 0.89481753, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 3
+freeze = true
+script = ExtResource("1_42tfq")
+metadata/_custom_type_script = "uid://c08rrrnnnrjmp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0743103, 0)
+shape = SubResource("BoxShape3D_27ymm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_d0juu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.06, 0, 0, 0, 0.2, 0, 0.039775163, 0)
+mesh = SubResource("CylinderMesh_beaq8")
+surface_material_override/0 = SubResource("StandardMaterial3D_03le6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rkelo")
+}

@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpveeo858git0"]
+
+[ext_resource type="Script" uid="uid://bl760qads1l1m" path="res://scripts/drawer_box.gd" id="1_l2s30"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beaq8"]
+size = Vector3(0.8076172, 0.2593994, 0.041259766)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_03le6"]
+size = Vector3(0.037857056, 0.2578125, 0.42114258)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0juu"]
+size = Vector3(0.7207031, 0.005783081, 0.49804688)
+
+[node name="FuseDrawer" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3309682, 0)
+use_collision = true
+size = Vector3(1, 1, 0.50097656)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16503906, 0)
+operation = 2
+size = Vector3(0.8964844, 0.6699219, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3309682, 0)
+operation = 2
+size = Vector3(0.8066406, 0.2607422, 1)
+
+[node name="SliderJoint3D" type="SliderJoint3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.0034367442, -0.039922714)
+node_b = NodePath("../DrawerBox")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
+
+[node name="DrawerBox" type="RigidBody3D" parent="."]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_l2s30")
+metadata/_custom_type_script = "uid://bl760qads1l1m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0015258789, -0.23083496)
+shape = SubResource("BoxShape3D_beaq8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3822403, -0.0009765625, 0.040161133)
+shape = SubResource("BoxShape3D_03le6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382, -0.001, 0.04)
+shape = SubResource("BoxShape3D_03le6")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11526838, 0)
+shape = SubResource("BoxShape3D_d0juu")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002, 0.231)
+shape = SubResource("BoxShape3D_beaq8")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0047302246)
+operation = 1
+inner_radius = 0.28528556
+outer_radius = 0.32979846
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="DrawerBox/CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.004058838, -0.36904907)
+operation = 1
+size = Vector3(1, 0.09234619, 0.2524414)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DrawerBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0047302246)
+size = Vector3(0.80859375, 0.2536621, 0.49554443)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="DrawerBox/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026550293, 0)
+operation = 2
+size = Vector3(0.7402344, 0.20056152, 0.4267578)

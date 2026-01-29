@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2mbvf2di7gxp"]
+
+[ext_resource type="Script" uid="uid://c5lngsqldb6u2" path="res://scripts/generator_plug.gd" id="1_3ntm6"]
+[ext_resource type="PackedScene" uid="uid://d28y7p3mcdo41" path="res://scenes/plug.tscn" id="2_4iscm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_03le6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rkelo"]
+
+[node name="GeneratorPlug" type="Node3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_3ntm6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.164, 0, 0, 0, 0.028, 0, 0, -0.016)
+mesh = SubResource("BoxMesh_03le6")
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.056360304, 0)
+pixel_size = 0.0004
+text = "AUXILLIARY
+GENERATOR
+STATUS:"
+
+[node name="Offline" type="Label3D" parent="."]
+visible = false
+pixel_size = 0.0015
+modulate = Color(1, 0, 0, 1)
+text = "OFFLINE"
+font_size = 14
+
+[node name="OK" type="Label3D" parent="."]
+pixel_size = 0.0015
+modulate = Color(0, 1, 0.116666794, 1)
+text = "OK"
+
+[node name="Plug" parent="." instance=ExtResource("2_4iscm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06564295, 0.02644)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0, -0.06564295, 0)
+mesh = SubResource("BoxMesh_rkelo")
