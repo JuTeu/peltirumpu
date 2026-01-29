@@ -6,7 +6,8 @@ var powered: bool:
 	get:
 		return _powered
 	set(value):
+		if value != _powered:
+			_animation_player.play("power_on" if value else "power_off")
 		_powered = value
-		_animation_player.play("power_on" if value else "power_off")
 
 var _powered := true

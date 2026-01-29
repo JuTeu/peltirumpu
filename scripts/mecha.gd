@@ -5,6 +5,7 @@ class_name Mecha extends Node3D
 @onready var laser_collision: Area3D = $Laser/Area3D
 @onready var forward_cast: ShapeCast3D = $ShapeCast3D
 @onready var back_cast: ShapeCast3D = $ShapeCast3D2
+@onready var hitbox: MechaHitbox = $Area3D
 
 @export var move_speed := 10.0
 @export var rotate_speed := 0.5

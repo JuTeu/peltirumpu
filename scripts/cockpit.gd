@@ -10,17 +10,17 @@ class_name Cockpit extends Node3D
 @onready var status_light_gun: StatusLight = $StatusLightGun
 @onready var status_light_tv: StatusLight = $StatusLightTV
 
-@onready var generator_plug: GeneratorPlug = $GeneratorPlug
-@onready var generator_plug_2: GeneratorPlug = $GeneratorPlug2
-@onready var generator_plug_3: GeneratorPlug = $GeneratorPlug3
-@onready var plug: Plug = $MainGeneratorPlug/Plug
-@onready var plug_2: Plug = $MainGeneratorPlug/Plug2
+@onready var generator_plug: GeneratorPlug = $SwitchBoard/GeneratorPlug
+@onready var generator_plug_2: GeneratorPlug = $SwitchBoard/GeneratorPlug2
+@onready var generator_plug_3: GeneratorPlug = $SwitchBoard/GeneratorPlug3
+@onready var plug: Plug = $SwitchBoard/MainGeneratorPlug/Plug
+@onready var plug_2: Plug = $SwitchBoard/MainGeneratorPlug/Plug2
 
-@onready var tracks_plug_socket: PlugSocket = $TracksPlugSocket
-@onready var lights_plug_socket: PlugSocket = $LightsPlugSocket
-@onready var tv_plug_socket: PlugSocket = $TVPlugSocket
-@onready var gun_plug_socket_1: PlugSocket = $GunPlugSocket1
-@onready var gun_plug_socket_2: PlugSocket = $GunPlugSocket2
+@onready var tracks_plug_socket: PlugSocket = $SwitchBoard/TracksPlugSocket
+@onready var lights_plug_socket: PlugSocket = $SwitchBoard/LightsPlugSocket
+@onready var tv_plug_socket: PlugSocket = $SwitchBoard/TVPlugSocket
+@onready var gun_plug_socket_1: PlugSocket = $SwitchBoard/GunPlugSocket1
+@onready var gun_plug_socket_2: PlugSocket = $SwitchBoard/GunPlugSocket2
 
 @onready var light_bulb: LightBulb = $LightBulb
 
@@ -53,6 +53,7 @@ func _ready() -> void:
 	
 	lights_plug_socket.powered_state_changed.connect(func(x: bool) -> void: light_bulb.powered = x)
 	tv_plug_socket.powered_state_changed.connect(func(x: bool) -> void: screen.powered = x; status_light_tv.powered = x)
+	_mecha.hitbox.damaged.connect(damaged)
 
 func _process(delta: float) -> void:
 	if not _mecha: return
@@ -91,3 +92,14 @@ func gun_socket_powered(value: bool) -> void:
 	else:
 		_gun_sockets -= 1
 	status_light_gun.powered = _gun_sockets == 2
+
+func damaged(amount: float) -> void:
+	if generator_plug_3.has_power:
+		generator_plug_3.has_power = false
+		return
+	if generator_plug.has_power:
+		generator_plug.has_power = false
+		return
+	if generator_plug_2.has_power:
+		generator_plug_2.has_power = false
+		return

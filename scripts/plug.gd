@@ -48,7 +48,7 @@ func end_interaction() -> void:
 	_collision_shape.global_position = _target_position
 
 func _get_plug_position(camera: Node3D) -> Vector3:
-	var point := global_position + Vector3.BACK * 0.07
+	var point := global_position + Vector3.BACK * 0.2
 	var plane_normal := to_global(Vector3.FORWARD) - global_position
 	var ray_origin := camera.global_position
 	var ray_dir := camera.to_global(Vector3.FORWARD) - ray_origin

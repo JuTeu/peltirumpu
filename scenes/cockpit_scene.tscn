@@ -24,45 +24,6 @@ emission = Color(1, 1, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5aw4l"]
 albedo_color = Color(0.3180198, 0.31801978, 0.31801975, 1)
 
-[sub_resource type="Animation" id="Animation_5aw4l"]
-resource_name = "power_on"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:omni_range")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 5.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CSGCylinder3D/CSGSphere3D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CSGCylinder3D/CSGSphere3D2:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_ae7ma"]
 length = 0.001
 tracks/0/type = "value"
@@ -141,6 +102,45 @@ tracks/2/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_5aw4l"]
+resource_name = "power_on"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:omni_range")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGCylinder3D/CSGSphere3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGCylinder3D/CSGSphere3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4dgta"]
 _data = {
 &"RESET": SubResource("Animation_ae7ma"),
@@ -151,7 +151,7 @@ _data = {
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygba6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruw74"]
-emission_enabled = true
+shading_mode = 0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_beaq8"]
 radius = 0.10813699
@@ -436,13 +436,6 @@ transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 
 [node name="Fuse24" parent="FusesInDrawer" instance=ExtResource("6_27ymm")]
 transform = Transform3D(-0.34223342, -0.939615, 0, 0.939615, -0.34223342, 0, 0, 0, 1, -0.15279065, -0.14848273, 1.0900453)
 
-[node name="SwitchBoard" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1528803, 0.7064403, 0.029495522)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SwitchBoard"]
-transform = Transform3D(0.08252666, 0, 0, 0, 0.5376875, 0, 0, 0, 0.6725486, 0, 0, 0)
-mesh = SubResource("BoxMesh_beaq8")
-
 [node name="StatusLightMovement" parent="." instance=ExtResource("9_03le6")]
 transform = Transform3D(0.62586904, 0.7799282, 0, -0.7799282, 0.62586904, 0, 0, 0, 1, -0.98116076, -0.15908797, -0.37327462)
 
@@ -452,97 +445,104 @@ transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 0.957441
 [node name="StatusLightTV" parent="." instance=ExtResource("9_03le6")]
 transform = Transform3D(1, 0, 0, 0, 0, -1.0000001, 0, 1.0000001, 0, 0.4961182, 0.11032443, -1.2206091)
 
-[node name="GeneratorPlug" parent="." instance=ExtResource("10_xm8iy")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0838261, 0.83639073, 0.24993466)
+[node name="SwitchBoard" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0211205, 0.7366017, 0.029495522)
 
-[node name="GeneratorPlug2" parent="." instance=ExtResource("10_xm8iy")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0838261, 0.83639073, 0.1213309)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SwitchBoard"]
+transform = Transform3D(0.08252666, 0, 0, 0, 0.5376875, 0, 0, 0, 0.6725486, 0, 0, 0)
+mesh = SubResource("BoxMesh_beaq8")
 
-[node name="GeneratorPlug3" parent="." instance=ExtResource("10_xm8iy")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0838261, 0.83639073, -0.006123051)
+[node name="GeneratorPlug" parent="SwitchBoard" instance=ExtResource("10_xm8iy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.069054246, 0.1299504, 0.22043914)
 
-[node name="MainGeneratorPlug" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0966208, 0.8484799, -0.19523126)
+[node name="GeneratorPlug2" parent="SwitchBoard" instance=ExtResource("10_xm8iy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.069054246, 0.1299504, 0.09183538)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MainGeneratorPlug"]
+[node name="GeneratorPlug3" parent="SwitchBoard" instance=ExtResource("10_xm8iy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.069054246, 0.1299504, -0.035618573)
+
+[node name="MainGeneratorPlug" type="Node3D" parent="SwitchBoard"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.056259513, 0.1420396, -0.22472678)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SwitchBoard/MainGeneratorPlug"]
 transform = Transform3D(0.12246928, 0, 0, 0, 0.17053035, 0, 0, 0, 0.02190708, 0, 0, 0)
 mesh = SubResource("BoxMesh_xm8iy")
 
-[node name="Label3D" type="Label3D" parent="MainGeneratorPlug"]
+[node name="Label3D" type="Label3D" parent="SwitchBoard/MainGeneratorPlug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04359758, 0.013367921)
 pixel_size = 0.0005
 text = "MAIN
 GENERATOR
 STATUS:"
 
-[node name="OK" type="Label3D" parent="MainGeneratorPlug"]
+[node name="OK" type="Label3D" parent="SwitchBoard/MainGeneratorPlug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.016751885, 0.013367891)
 pixel_size = 0.0017
 modulate = Color(0.16078432, 1, 0.20392157, 1)
 text = "OK"
 
-[node name="Plug" parent="MainGeneratorPlug" instance=ExtResource("11_5lyat")]
+[node name="Plug" parent="SwitchBoard/MainGeneratorPlug" instance=ExtResource("11_5lyat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.052669168, -0.077678084, 0.039229035)
 
-[node name="Plug2" parent="MainGeneratorPlug" instance=ExtResource("11_5lyat")]
+[node name="Plug2" parent="SwitchBoard/MainGeneratorPlug" instance=ExtResource("11_5lyat")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04813701, -0.077678084, 0.039229035)
 
-[node name="TracksPlugSocket" parent="." instance=ExtResource("10_5lyat")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, 0.2663612)
+[node name="TracksPlugSocket" parent="SwitchBoard" instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.080149055, -0.17183566, 0.23686568)
 
-[node name="LightsPlugSocket" parent="." instance=ExtResource("10_5lyat")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, 0.14179093)
+[node name="LightsPlugSocket" parent="SwitchBoard" instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.080149055, -0.17183566, 0.112295404)
 
-[node name="TVPlugSocket" parent="." instance=ExtResource("10_5lyat")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, 0.01671964)
+[node name="TVPlugSocket" parent="SwitchBoard" instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.080149055, -0.17183566, -0.012775883)
 
-[node name="GunPlugSocket1" parent="." instance=ExtResource("10_5lyat")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, -0.10367145)
+[node name="GunPlugSocket1" parent="SwitchBoard" instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.080149055, -0.17183566, -0.13316697)
 
-[node name="GunPlugSocket2" parent="." instance=ExtResource("10_5lyat")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0727313, 0.53460467, -0.22105417)
+[node name="GunPlugSocket2" parent="SwitchBoard" instance=ExtResource("10_5lyat")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.080149055, -0.17183566, -0.25054967)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44481477, 0.2656741)
+[node name="SpotLight3D" type="SpotLight3D" parent="SwitchBoard"]
+transform = Transform3D(-4.278952e-08, -0.20429102, 0.9789102, -8.929841e-09, 0.9789102, 0.20429102, -1, 1.7763568e-15, -4.3711385e-08, 0.52592236, 0.22722971, 0.066627175)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.284
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="SwitchBoard"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.05657518, -0.26162556, 0.23617859)
 polygon = PackedVector2Array(-0.052, -0.01, -0.02, 0.035, 0.02, 0.035, 0.052, -0.01)
 depth = 0.01
 material = SubResource("StandardMaterial3D_xm8iy")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="CSGPolygon3D"]
-transform = Transform3D(1, 8.929842e-09, 9.218617e-10, -8.929841e-09, 0.9789102, 0.20429102, 9.218688e-10, -0.20429102, 0.9789102, 0.1695514, 0.48885527, 0.46934718)
-light_color = Color(1, 0, 0, 1)
-light_energy = 0.284
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44564015, 0.14125441)
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="SwitchBoard"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.05657518, -0.26080018, 0.11175889)
 polygon = PackedVector2Array(-0.024750859, 0.018526852, -0.013595626, 0.036034554, 0.013926506, 0.03520739, 0.022262387, 0.016837925, 0.010001585, 0.0023688376, 0.010007918, -0.017133862, -0.013123989, -0.016655833, -0.0126114935, 0.0028259754)
 depth = 0.01
 material = SubResource("StandardMaterial3D_xm8iy")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGPolygon3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="SwitchBoard/CSGPolygon3D2"]
 transform = Transform3D(1, -4.371139e-08, 4.371139e-08, 4.371139e-08, -4.371139e-08, -1, 4.371139e-08, 1, -4.3711385e-08, 0, 0.018100083, -0.015271425)
 operation = 2
 radius = 0.013671875
 height = 0.04346289
 
-[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44481477, 0.14497632)
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="SwitchBoard"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.05657518, -0.26162556, 0.115480796)
 polygon = PackedVector2Array(0.0009431839, 0.0033834875, -0.0025354028, 0.01549232, 0.00873965, 0.0150714815, 0.0047786087, 0.0026453435)
 depth = 0.01
 material = SubResource("StandardMaterial3D_xm8iy")
 
-[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0963051, 0.44564015, 0.015863076)
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="SwitchBoard"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.05657518, -0.26080018, -0.0136324465)
 polygon = PackedVector2Array(-0.01192883, 0.03595531, 0.0012139762, 0.025279462, 0.013926506, 0.03520739, 0.0036895787, 0.022954881, 0.024673726, 0.022698015, 0.024779964, -0.017197043, -0.023101278, -0.017435849, -0.022917792, 0.02219057, -0.0025096443, 0.022107601)
 depth = 0.01
 material = SubResource("StandardMaterial3D_xm8iy")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGPolygon3D3"]
+[node name="CSGBox3D" type="CSGBox3D" parent="SwitchBoard/CSGPolygon3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002646069, 0.00525257, 0)
 size = Vector3(0.03100586, 0.021728516, 0.01)
 
-[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0973401, 0.44791844, -0.15673466)
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="SwitchBoard"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.055540204, -0.25852188, -0.18623018)
 polygon = PackedVector2Array(-0.05247488, 0.0156959, -0.057424195, 0.03258705, 0.06006059, 0.027725697, 0.0783727, 0.016936779, 0.07310012, -0.004944265, 0.044477984, 0.008811504, 0.039592147, -0.0102470815, 0.027173206, -0.010857761, 0.028777763, 0.010986507, 0.012752414, 0.011152804, 0.0010525286, -0.009995818, -0.01526022, -0.007283509, -0.009255871, 0.011381209)
 depth = 0.01
 material = SubResource("StandardMaterial3D_xm8iy")

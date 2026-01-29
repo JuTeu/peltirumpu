@@ -11,7 +11,7 @@ size = Vector3(0.1, 0.1, 0.1)
 albedo_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rkelo"]
-radius = 0.05
+radius = 0.025
 
 [node name="Plug" type="RigidBody3D"]
 collision_layer = 2
