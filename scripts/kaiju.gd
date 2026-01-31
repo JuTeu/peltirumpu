@@ -26,7 +26,7 @@ func _get_mecha() -> Node3D:
 
 func damaged(amount: float) -> void:
 	_health -= amount
-	if _anger_treshold > _health:
+	if _anger_treshold > _health and _player_aggro_cooldown <= 0.0:
 		_target = _get_mecha()
 		_anger_treshold -= 2.0
 

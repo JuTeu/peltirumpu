@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c4gemka6lcsjj"]
+[gd_scene format=3 uid="uid://c4gemka6lcsjj"]
 
 [ext_resource type="PackedScene" uid="uid://du6d7k8rxxbhh" path="res://scenes/building.tscn" id="1_54f55"]
 [ext_resource type="Script" uid="uid://dn7uvssfxyjby" path="res://scripts/kaiju.gd" id="1_fl7t4"]
@@ -151,535 +151,533 @@ size = Vector3(0.6, 1, 0.1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_au6iv"]
 radius = 0.41552734
 
-[node name="Kaiju Scene" type="Node3D"]
+[node name="Kaiju Scene" type="Node3D" unique_id=294318058]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=160641311]
 environment = SubResource("Environment_bq2hb")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=160091241]
 transform = Transform3D(-0.9971851, -0.06493341, 0.037489317, 0, 0.49999997, 0.86602545, -0.07497864, 0.8635877, -0.49859253, 0, 0, 0)
 light_energy = 0.7
 shadow_enabled = true
 directional_shadow_max_distance = 10.0
 
-[node name="CSGBox3Dwater" type="CSGBox3D" parent="."]
+[node name="CSGBox3Dwater" type="CSGBox3D" parent="." unique_id=1464614109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13042927, 0)
 size = Vector3(1382.3193, 1, 1382.9004)
 material = SubResource("StandardMaterial3D_5jstc")
 
-[node name="Island" type="CSGCombiner3D" parent="."]
+[node name="Island" type="CSGCombiner3D" parent="." unique_id=1118616115]
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Island"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Island" unique_id=1934417087]
 transform = Transform3D(1.61, 0, 0, 0, -5.3765007e-08, 1.5, 0, -1.23, -6.556708e-08, -1.4204998, 0.55378914, 0.06600404)
 polygon = PackedVector2Array(2.5444374, 1.5327814, 2.0453556, 0.54628205, 3.131219, -0.6043284, 3.9571047, -1.5085652, 3.386685, -3.0962136, 1.2063763, -4.0293493, -0.3618399, -5.6820626, -3.6879745, -6.459781, -4.4501457, -6.8485293, -4.625232, -5.9872823, -5.9252553, -5.548718, -7.0665464, -3.932713, -7.7077713, -4.00545, -7.16685, -2.8598647, -7.530835, -1.2640595, -7.1454525, 0.5505767, -6.6745214, 3.2869, -5.4944935, 4.4576836, -4.1717186, 5.9891624, -2.640248, 7.1970644, -1.1632557, 7.3186126, 0.3904704, 7.970601, 1.5370537, 8.5088415, 3.106452, 8.828799, 3.7079394, 9.454905, 4.18694, 9.754391, 4.732778, 9.636667, 4.6468105, 10.055273, 5.3061347, 11.239189, 5.822496, 11.737057, 5.811613, 12.459997, 6.371902, 12.104198, 6.974681, 11.784929, 7.307889, 12.162004, 7.6101503, 12.017712, 7.3410616, 11.548947, 7.8773413, 10.987471, 8.307318, 9.808158, 8.271784, 9.20152, 7.664715, 8.492818, 7.3756895, 7.700977, 7.20901, 6.936922, 7.653516, 6.578277, 7.219903, 6.2391167, 6.6454353, 4.983278, 5.22498, 3.8850262, 4.0912657, 3.4461575, 3.338129, 2.903656, 2.4259512, 2.5343342)
 material = SubResource("StandardMaterial3D_1mi8s")
 
-[node name="Kaiju" type="Node3D" parent="."]
+[node name="Kaiju" type="Node3D" parent="." unique_id=1947643851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_fl7t4")
 
-[node name="Area3D" type="Area3D" parent="Kaiju"]
+[node name="Area3D" type="Area3D" parent="Kaiju" unique_id=591483694]
 script = ExtResource("2_au6iv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Kaiju/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kaiju/Area3D" unique_id=569901281]
 shape = SubResource("CylinderShape3D_fl7t4")
 debug_color = Color(0, 0.59607846, 0.7019608, 1)
 
-[node name="Model" type="Node3D" parent="Kaiju"]
+[node name="Model" type="Node3D" parent="Kaiju" unique_id=418195378]
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Kaiju/Model" unique_id=606166742]
 transform = Transform3D(0.2, 0, 0, 0, 0.14622788, 0.13644563, 0, -0.13644563, 0.14622788, 0, 0.32551467, -0.24155939)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4" unique_id=1079104531]
 transform = Transform3D(1.7499998, 0, 0, 0, 1.2794939, -1.1938992, 0, 1.1938992, 1.2794939, 0, 0.89509344, 0.08104777)
 mesh = SubResource("SphereMesh_q8tl5")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5" unique_id=759504029]
 transform = Transform3D(0.5714286, 0, 0, 0, 0.14285715, 0, 0, 0, 0.5714286, 0.022274086, -0.08987045, -0.54990304)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6" unique_id=1698540299]
 transform = Transform3D(0.15601186, -4.3760746e-08, -0.12514114, 0, -0.8000001, 1.7484558e-08, -0.12514114, -5.4555965e-08, -0.15601186, -0.27929634, -1.3717194, -0.24928641)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6" unique_id=1745622445]
 transform = Transform3D(0.1560861, -5.458192e-08, 0.12504853, -1.7484556e-08, -0.8000001, 0, 0.12504853, -4.372836e-08, -0.1560861, 0.279, -1.372, -0.249)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6" unique_id=2125492224]
 transform = Transform3D(-0.009396877, -6.9860995e-08, -0.19977914, 0, -0.8000001, 1.7484558e-08, -0.19977914, 3.2860092e-09, 0.009396877, -0.37560385, -1.3717232, 0.04159689)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D6" unique_id=2023087623]
 transform = Transform3D(-0.009421285, 3.29454e-09, 0.19977798, -1.7484556e-08, -0.8000001, 0, 0.19977798, -6.986058e-08, 0.009421285, 0.376, -1.372, 0.042)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5" unique_id=718583354]
 transform = Transform3D(-0.5714286, -1.2488969e-08, 0, 3.8413184e-08, -0.109848894, 0.3653247, -3.1937702e-08, 0.09133118, 0.43939558, 0.022274086, -0.5728321, -0.3523909)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7" unique_id=1101756376]
 transform = Transform3D(0.15601186, -4.3760746e-08, -0.12514114, 0, -0.8000001, 1.7484558e-08, -0.12514114, -5.4555965e-08, -0.15601186, -0.27929634, -1.3717194, -0.24928641)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7" unique_id=641684233]
 transform = Transform3D(0.1560861, -5.458192e-08, 0.12504853, -1.7484556e-08, -0.8000001, 0, 0.12504853, -4.372836e-08, -0.1560861, 0.279, -1.372, -0.249)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7" unique_id=1744852315]
 transform = Transform3D(-0.009396877, -6.9860995e-08, -0.19977914, 0, -0.8000001, 1.7484558e-08, -0.19977914, 3.2860092e-09, 0.009396877, -0.37560385, -1.3717232, 0.04159689)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D7" unique_id=429085684]
 transform = Transform3D(-0.009421285, 3.29454e-09, 0.19977798, -1.7484556e-08, -0.8000001, 0, 0.19977798, -6.986058e-08, 0.009421285, 0.376, -1.372, 0.042)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5" unique_id=1773759324]
 transform = Transform3D(0.1258115, -0.02699254, -0.005088984, 0.019558674, 0.0103897685, 0.13910769, -0.06478495, -0.04928246, 0.032114092, -0.23117162, 0.12185192, -0.36107945)
 mesh = SubResource("CylinderMesh_au6iv")
 skeleton = NodePath("../../../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D8"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D8" unique_id=1297914539]
 transform = Transform3D(0.50000006, 0, 3.7252903e-09, 2.9802322e-08, 0.50000006, -1.4901161e-08, 3.7252903e-09, 0, 0.5, 0.1539259, 0.7318306, -0.076301575)
 mesh = SubResource("CylinderMesh_1c0ev")
 surface_material_override/0 = SubResource("StandardMaterial3D_g2nqe")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5"]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5" unique_id=1989803508]
 transform = Transform3D(0.12578006, 0.027015563, 0.0051031355, -0.019632142, 0.010421092, 0.1390827, 0.064823814, -0.049263228, 0.032219928, 0.23142858, 0.12154007, -0.36045885)
 mesh = SubResource("CylinderMesh_au6iv")
 skeleton = NodePath("../../../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D9"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5/MeshInstance3D9" unique_id=1579400485]
 transform = Transform3D(0.5, 0, 7.450581e-09, -2.9802322e-08, 0.50000006, -4.4703484e-08, 3.7252903e-09, 0, 0.5, -0.13688135, 0.6501465, -0.068035126)
 mesh = SubResource("CylinderMesh_1c0ev")
 surface_material_override/0 = SubResource("StandardMaterial3D_g2nqe")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5"]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5" unique_id=364775924]
 transform = Transform3D(0.20222767, 0.037513528, 0.09368508, -0.09938168, 0.13393651, 0, -0.17566994, -0.03258703, 0.10784837, -0.21721922, 0.2866063, -0.36984134)
 mesh = SubResource("BoxMesh_kd5h6")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_jkdb1")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5"]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D4/MeshInstance3D5" unique_id=777638450]
 transform = Transform3D(0.20210737, -0.03758153, -0.093722716, 0.09959202, 0.13389744, 0, 0.17568924, -0.032669123, 0.10781566, 0.21714285, 0.2872548, -0.36903036)
 mesh = SubResource("BoxMesh_kd5h6")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_jkdb1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model" unique_id=192543276]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0.075799465, 0)
 mesh = SubResource("SphereMesh_q8tl5")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model" unique_id=508022937]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.19853362, -0.22700322, 0)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model" unique_id=1506100495]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.199, -0.227, 0)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Kaiju/Model" unique_id=1573615029]
 transform = Transform3D(0.15150617, 0.119239934, -0.053176343, 0, -0.08145894, -0.18265939, -0.1305599, 0.13837013, -0.06170766, -0.25467676, 0.19027829, -0.23848331)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5" unique_id=1347597053]
 transform = Transform3D(0.44076174, 0, -1.169713, 1.0682952, -0.5091182, 0.40254617, -0.47641787, -1.1416208, -0.17951983, 0.07744074, -0.97634745, 0.0733161)
 mesh = SubResource("SphereMesh_q8tl5")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5/MeshInstance3D6" unique_id=1287846231]
 transform = Transform3D(0.1951076, -0.14553395, -0.05703414, 0, -0.09121921, 0.23276395, -0.15631065, -0.18165606, -0.071190245, -0.33547676, -0.18224669, -0.44318366)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5/MeshInstance3D6" unique_id=738697051]
 transform = Transform3D(0.24926317, -0.017857414, -0.0069982517, 7.974633e-09, -0.09121919, 0.23276396, -0.019179747, -0.23207794, -0.09095034, 0.060260892, -0.18224669, -0.56283915)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5/MeshInstance3D6"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D5/MeshInstance3D6" unique_id=1897369147]
 transform = Transform3D(0.02439574, -0.23165305, -0.090783834, 7.974633e-09, -0.09121918, 0.23276396, -0.24880682, -0.0227138, -0.008901432, -0.54437387, -0.18224669, -0.084560394)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Kaiju/Model" unique_id=1303010972]
 transform = Transform3D(0.15139903, -0.119385906, 0.053154018, -7.1116095e-09, -0.08134734, -0.18270913, 0.13068412, 0.13830991, -0.061579537, 0.255, 0.19000006, -0.238)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8" unique_id=1897429484]
 transform = Transform3D(1.0430671, -2.9103818e-08, -0.68884736, 0.6292934, -0.50842065, 0.952889, -0.28017947, -1.1419318, -0.4242535, -0.08128804, -0.9752269, 0.07296944)
 mesh = SubResource("SphereMesh_q8tl5")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8/MeshInstance3D7"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8/MeshInstance3D7" unique_id=1906786814]
 transform = Transform3D(0.1951076, -0.14553395, -0.05703414, 0, -0.09121921, 0.23276395, -0.15631065, -0.18165606, -0.071190245, -0.33547676, -0.18224669, -0.44318366)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8/MeshInstance3D7"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8/MeshInstance3D7" unique_id=1362784230]
 transform = Transform3D(0.24926317, -0.017857414, -0.0069982517, 7.974633e-09, -0.09121919, 0.23276396, -0.019179747, -0.23207794, -0.09095034, 0.060260892, -0.18224669, -0.56283915)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8/MeshInstance3D7"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Kaiju/Model/MeshInstance3D8/MeshInstance3D7" unique_id=280245647]
 transform = Transform3D(0.02439574, -0.23165305, -0.090783834, 7.974633e-09, -0.09121918, 0.23276396, -0.24880682, -0.0227138, -0.008901432, -0.54437387, -0.18224669, -0.084560394)
 mesh = SubResource("PrismMesh_fl7t4")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Kaiju/Model" unique_id=1608628112]
 transform = Transform3D(0.3, 0, 0, 0, 0.110213384, 0.27902153, 0, -0.27902153, 0.110213384, 0, -0.04080844, 0.35589862)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Kaiju/Model"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Kaiju/Model" unique_id=658190551]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.033945587, 0.19709821, 0, -0.19709821, 0.033945587, 0, -0.17382741, 0.82337016)
 mesh = SubResource("CylinderMesh_bq2hb")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i31xy")
 
-[node name="CastForTargets" type="ShapeCast3D" parent="Kaiju"]
+[node name="CastForTargets" type="ShapeCast3D" parent="Kaiju" unique_id=233474809]
 shape = SubResource("SphereShape3D_fl7t4")
 target_position = Vector3(0, 0, 0)
 collide_with_areas = true
 
-[node name="CastForPunchables" type="ShapeCast3D" parent="Kaiju"]
+[node name="CastForPunchables" type="ShapeCast3D" parent="Kaiju" unique_id=344132153]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5945703)
 shape = SubResource("BoxShape3D_fl7t4")
 target_position = Vector3(0, 0, 0)
 collide_with_areas = true
 
-[node name="Building Set 1" type="Node3D" parent="."]
+[node name="Building Set 1" type="Node3D" parent="." unique_id=1537007601]
 
-[node name="Building" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building" parent="Building Set 1" unique_id=1043413556 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
-[node name="Building2" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building2" parent="Building Set 1" unique_id=269583964 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1)
 
-[node name="Building3" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building3" parent="Building Set 1" unique_id=1395283493 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 1)
 
-[node name="Building4" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building4" parent="Building Set 1" unique_id=1725188873 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 3)
 
-[node name="Building5" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building5" parent="Building Set 1" unique_id=228685979 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 3)
 
-[node name="Building6" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building6" parent="Building Set 1" unique_id=1181499533 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 2)
 
-[node name="Building7" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building7" parent="Building Set 1" unique_id=1121253271 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
 
-[node name="Building8" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building8" parent="Building Set 1" unique_id=1457586066 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
 
-[node name="Building9" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building9" parent="Building Set 1" unique_id=1066520544 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 3)
 
-[node name="Building10" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building10" parent="Building Set 1" unique_id=1406026564 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 4)
 
-[node name="Building11" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building11" parent="Building Set 1" unique_id=295116825 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 3)
 
-[node name="Building12" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building12" parent="Building Set 1" unique_id=1122466918 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 4)
 
-[node name="Building13" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building13" parent="Building Set 1" unique_id=127454224 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 6)
 
-[node name="Building14" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building14" parent="Building Set 1" unique_id=1739122803 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 4)
 
-[node name="Building15" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building15" parent="Building Set 1" unique_id=47957441 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 4)
 
-[node name="Building16" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building16" parent="Building Set 1" unique_id=1559116685 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 3)
 
-[node name="Building17" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building17" parent="Building Set 1" unique_id=418881927 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 5)
 
-[node name="Building18" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building18" parent="Building Set 1" unique_id=1270540627 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 4)
 
-[node name="Building19" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building19" parent="Building Set 1" unique_id=1955921502 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 3)
 
-[node name="Building20" parent="Building Set 1" instance=ExtResource("1_54f55")]
+[node name="Building20" parent="Building Set 1" unique_id=1785994578 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 6)
 
-[node name="Building Set 2" type="Node3D" parent="."]
+[node name="Building Set 2" type="Node3D" parent="." unique_id=602003190]
 
-[node name="Building21" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building21" parent="Building Set 2" unique_id=1068272074 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 6)
 
-[node name="Building22" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building22" parent="Building Set 2" unique_id=1657299501 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 4)
 
-[node name="Building23" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building23" parent="Building Set 2" unique_id=696355173 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 3)
 
-[node name="Building24" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building24" parent="Building Set 2" unique_id=941362523 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 1)
 
-[node name="Building25" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building25" parent="Building Set 2" unique_id=2068300838 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
 
-[node name="Building26" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building26" parent="Building Set 2" unique_id=1185934387 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 6)
 
-[node name="Building27" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building27" parent="Building Set 2" unique_id=1033879987 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 3)
 
-[node name="Building28" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building28" parent="Building Set 2" unique_id=1779797560 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 6)
 
-[node name="Building29" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building29" parent="Building Set 2" unique_id=950110243 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 3)
 
-[node name="Building30" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building30" parent="Building Set 2" unique_id=324919003 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 4)
 
-[node name="Building31" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building31" parent="Building Set 2" unique_id=27391722 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 4)
 
-[node name="Building32" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building32" parent="Building Set 2" unique_id=90894750 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 5)
 
-[node name="Building33" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building33" parent="Building Set 2" unique_id=1837870272 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
 
-[node name="Building34" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building34" parent="Building Set 2" unique_id=1788221537 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2)
 
-[node name="Building35" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building35" parent="Building Set 2" unique_id=1672566252 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 6)
 
-[node name="Building36" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building36" parent="Building Set 2" unique_id=795474717 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 6)
 
-[node name="Building37" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building37" parent="Building Set 2" unique_id=171240401 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 4)
 
-[node name="Building38" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building38" parent="Building Set 2" unique_id=1303033201 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 4)
 
-[node name="Building39" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building39" parent="Building Set 2" unique_id=151990236 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 3)
 
-[node name="Building40" parent="Building Set 2" instance=ExtResource("1_54f55")]
+[node name="Building40" parent="Building Set 2" unique_id=460961522 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 3)
 
-[node name="Park" type="Node3D" parent="."]
+[node name="Park" type="Node3D" parent="." unique_id=1192682907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.064796, 1, 0.0654695)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Park"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Park" unique_id=1248766568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.914917, -0.4678955, 0.4345398)
 size = Vector3(4.829834, 0.064208984, 1.8690796)
 material = SubResource("StandardMaterial3D_bq2hb")
 
-[node name="park_tree" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree" parent="Park" unique_id=837165042 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28180623, -0.36938477, 0)
 
-[node name="park_tree_big" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree_big" parent="Park" unique_id=936248140 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.19226146, -0.35185987, 0.14908674)
 
-[node name="park_tree2" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree2" parent="Park" unique_id=1682169875 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34589672, -0.36938477, -0.35406196)
 
-[node name="path" type="CSGPolygon3D" parent="Park"]
+[node name="path" type="CSGPolygon3D" parent="Park" unique_id=978210918]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.7204828, -0.4780597, 0.03297472)
 polygon = PackedVector2Array(0.3925209, 0.38106215, 0.7972381, 0.51144993, 1.2289317, 0.5554189, 1.2257855, 0.3158263, 0.65100574, 0.24659377, 0.34344482, 0.01739341, -0.011651039, -0.15221909, -0.31807852, -0.084295794, -0.5921874, 0.096990615, -1.046792, 0.32065693, -1.5623064, 0.39433998, -2.5561256, 0.1442452, -3.154675, 0.12974966, -3.6287017, 0.27714565, -3.633122, 0.61944973, -2.8773985, 0.41390404, -2.0158663, 0.66362727, -1.2137227, 0.6982378, -0.44991398, 0.32452583, -0.03652954, 0.13172272)
 depth = 0.06
 material = SubResource("StandardMaterial3D_fl7t4")
 
-[node name="park_tree_big2" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree_big2" parent="Park" unique_id=1699713563 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.8894286, -0.35185987, 0.611372)
 
-[node name="park_tree_big3" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree_big3" parent="Park" unique_id=1807336871 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -3.118761, -0.35185987, 0.036821604)
 
-[node name="park_tree_big4" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree_big4" parent="Park" unique_id=385194730 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -2.023426, -0.35185987, 0.96993905)
 
-[node name="park_tree3" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree3" parent="Park" unique_id=2040904548 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0610647, -0.36938477, 0.76769745)
 
-[node name="park_tree4" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree4" parent="Park" unique_id=1290839986 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7756462, -0.36938477, 0)
 
-[node name="park_tree5" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree5" parent="Park" unique_id=1141951603 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.980887, -0.36938477, 0)
 
-[node name="park_tree6" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree6" parent="Park" unique_id=1857428446 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.144184, -0.36938477, -0.096647024)
 
-[node name="park_tree7" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree7" parent="Park" unique_id=733405679 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2801352, -0.36938477, 0.9671818)
 
-[node name="park_tree8" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree8" parent="Park" unique_id=583816611 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.605812, -0.36938477, 0.838284)
 
-[node name="park_tree9" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree9" parent="Park" unique_id=453280384 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.348731, -0.36938477, 0.7636709)
 
-[node name="park_tree10" parent="Park" instance=ExtResource("2_1mi8s")]
+[node name="park_tree10" parent="Park" unique_id=1725511905 instance=ExtResource("2_1mi8s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22675, -0.36938477, -0.22805214)
 
-[node name="Road" type="Node3D" parent="."]
+[node name="Road" type="Node3D" parent="." unique_id=500488146]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Road" unique_id=1641084197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4638672, -2)
 size = Vector3(1, 0.072265625, 13)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Road" unique_id=1043104142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.4638672, 2)
 size = Vector3(15, 0.072265625, 1)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Road" unique_id=140758745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.4638672, -1)
 size = Vector3(1, 0.072265625, 15)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Road" unique_id=1841136951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.4638672, 0.5)
 size = Vector3(1, 0.072265625, 12)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Road" unique_id=1386270312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.4638672, 4)
 size = Vector3(1, 0.072265625, 5)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Road" unique_id=1477963722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.4638672, 5)
 size = Vector3(9, 0.072265625, 1)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="Road"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="Road" unique_id=1557820845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.4638672, -1)
 size = Vector3(13, 0.072265625, 1)
 material = SubResource("StandardMaterial3D_au6iv")
 
-[node name="Building41" parent="." instance=ExtResource("1_54f55")]
+[node name="Building41" parent="." unique_id=1126529661 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 4)
 
-[node name="Building42" parent="." instance=ExtResource("1_54f55")]
+[node name="Building42" parent="." unique_id=477033155 instance=ExtResource("1_54f55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 3)
 
-[node name="Mecha" type="Node3D" parent="."]
+[node name="Mecha" type="Node3D" parent="." unique_id=948622626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.294939, 1, -6)
 script = ExtResource("3_bq2hb")
 move_speed = 0.2
 rotate_speed = 0.125
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Mecha"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Mecha" unique_id=780008287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12051636, 0, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Mecha/CSGCombiner3D" unique_id=894202314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12011719, 0.29144287, -0.1262207)
 size = Vector3(0.23242188, 0.41711426, 0.7475586)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Mecha/CSGCombiner3D" unique_id=818142372]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.26399156, 0.3510443, 0.0621171)
 radius = 0.060058594
 height = 1.1655273
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Mecha/CSGCombiner3D" unique_id=78336159]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11922578, 0.38982832, 0.24218988)
 size = Vector3(0.1559372, 0.051696777, 0.033569336)
 material = SubResource("StandardMaterial3D_1c0ev")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Mecha/CSGCombiner3D" unique_id=1382489257]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27355957, 0.35943604, 0.54060364)
 operation = 2
 size = Vector3(0.14770508, 0.0435791, 0.29196167)
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Mecha/CSGCombiner3D" unique_id=1723816850]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111122236, 0.08718014, -0.112614155)
 radius = 0.10253906
 height = 0.4126587
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Mecha/CSGCombiner3D" unique_id=929166630]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10418701, -0.18170166, -0.09384155)
 size = Vector3(0.27770996, 0.16809082, 0.2850952)
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Mecha/CSGCombiner3D" unique_id=1963402232]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.41140905, -0.42336756, -0.61619663)
 polygon = PackedVector2Array(0.22704536, 0.003133297, 0.39994848, 0.27117145, 0.6466032, 0.27281117, 0.91864175, 0.0073815584)
 depth = 0.19
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Mecha/CSGCombiner3D"]
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Mecha/CSGCombiner3D" unique_id=1062834785]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.013584018, -0.42336756, -0.61619663)
 polygon = PackedVector2Array(0.22704536, 0.003133297, 0.39994848, 0.27117145, 0.6466032, 0.27281117, 0.91864175, 0.0073815584)
 depth = 0.19
 
-[node name="Camera3D" type="Camera3D" parent="Mecha"]
+[node name="Camera3D" type="Camera3D" parent="Mecha" unique_id=1774810869]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0.37353492, 0.25307846)
 fov = 60.0
 
-[node name="Laser" type="Node3D" parent="Mecha"]
+[node name="Laser" type="Node3D" parent="Mecha" unique_id=1938283607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14676331, 0.34710562, 0)
 visible = false
 
-[node name="Area3D" type="Area3D" parent="Mecha/Laser"]
+[node name="Area3D" type="Area3D" parent="Mecha/Laser" unique_id=1278880751]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mecha/Laser/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mecha/Laser/Area3D" unique_id=931227349]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.1920929e-07, 3.800949)
 shape = SubResource("CylinderShape3D_bq2hb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mecha/Laser"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mecha/Laser" unique_id=91758137]
 transform = Transform3D(0.1, 0, 0, 0, -1.57361e-07, -0.1, 0, 3.6, -4.371139e-09, 0, 0, 3.2495747)
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_fl7t4")
 surface_material_override/0 = SubResource("StandardMaterial3D_uxmdc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mecha"]
-libraries = {
-&"": SubResource("AnimationLibrary_fl7t4")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mecha" unique_id=1738947789]
+libraries/ = SubResource("AnimationLibrary_fl7t4")
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="Mecha"]
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Mecha" unique_id=1033382628]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.47029924)
 shape = SubResource("BoxShape3D_bq2hb")
 target_position = Vector3(0, 0, 0.1)
 collide_with_areas = true
 
-[node name="ShapeCast3D2" type="ShapeCast3D" parent="Mecha"]
+[node name="ShapeCast3D2" type="ShapeCast3D" parent="Mecha" unique_id=1799395956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4768715)
 shape = SubResource("BoxShape3D_bq2hb")
 target_position = Vector3(0, 0, -0.05)
 collide_with_areas = true
 
-[node name="Area3D" type="Area3D" parent="Mecha"]
+[node name="Area3D" type="Area3D" parent="Mecha" unique_id=707871974]
 script = ExtResource("6_1c0ev")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mecha/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mecha/Area3D" unique_id=1967501459]
 shape = SubResource("CylinderShape3D_au6iv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1850778392]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1156304700]
 offset_right = 40.0
 offset_bottom = 23.0
