@@ -11,6 +11,7 @@ var _player_aggro_cooldown: float
 var _target: Node3D
 var _health: float = 10.0
 var _anger_treshold: float = 8.001
+var _damaged_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +27,12 @@ func _get_mecha() -> Node3D:
 
 func damaged(amount: float) -> void:
 	_health -= amount
+	var material: StandardMaterial3D = $Model/MeshInstance3D4.get_surface_override_material(0)
+	if _damaged_tween:
+		_damaged_tween.kill()
+	_damaged_tween = create_tween()
+	_damaged_tween.tween_property(material, "albedo_color", Color.ALICE_BLUE, 0.1)
+	_damaged_tween.tween_property(material, "albedo_color", Color.RED, 0.1)
 	if _anger_treshold > _health and _player_aggro_cooldown <= 0.0:
 		_target = _get_mecha()
 		_anger_treshold -= 2.0
