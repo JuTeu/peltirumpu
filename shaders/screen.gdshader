@@ -58,7 +58,6 @@ void fragment() {
 	}
 }
 
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}
+void light() {
+	DIFFUSE_LIGHT = vec3(1.0);
+}
