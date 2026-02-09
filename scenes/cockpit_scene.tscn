@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dn58cqtcix2hl" path="res://scripts/light_bulb.gd" id="3_5aw4l"]
 [ext_resource type="Environment" uid="uid://c1wdyqqo20o84" path="res://scenes/cockpit_scene.tres" id="3_ae7ma"]
 [ext_resource type="PackedScene" uid="uid://cpmlyx0cxwri8" path="res://scenes/lever.tscn" id="3_eqbwn"]
+[ext_resource type="Shader" uid="uid://dtmhw7qut7inr" path="res://shaders/screen.gdshader" id="5_4dgta"]
 [ext_resource type="PackedScene" uid="uid://vvw8tjenba8b" path="res://scenes/interactable_button.tscn" id="6_03le6"]
 [ext_resource type="PackedScene" uid="uid://bjb3bj612fto2" path="res://scenes/fuse.tscn" id="6_27ymm"]
 [ext_resource type="Script" uid="uid://djutr66ov0ivo" path="res://scripts/fuse_box.gd" id="7_beaq8"]
@@ -150,8 +151,10 @@ _data = {
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygba6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ruw74"]
-shading_mode = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pq34"]
+render_priority = 0
+shader = ExtResource("5_4dgta")
+shader_parameter/progress = 0.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_beaq8"]
 radius = 0.10813699
@@ -269,7 +272,7 @@ size = Vector3(1, 0.74401855, 1)
 [node name="Screen" type="MeshInstance3D" parent="." unique_id=65193637]
 transform = Transform3D(0.5, 0, 0, 0, -5.4639235e-09, -0.375, 0, 0.125, -1.639177e-08, 0, 0.54571474, -1.2784462)
 mesh = SubResource("PlaneMesh_ygba6")
-surface_material_override/0 = SubResource("StandardMaterial3D_ruw74")
+surface_material_override/0 = SubResource("ShaderMaterial_3pq34")
 script = ExtResource("2_ruw74")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1146687320]
