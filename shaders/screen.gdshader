@@ -59,5 +59,5 @@ void fragment() {
 }
 
 void light() {
-	DIFFUSE_LIGHT = vec3(1.0);
+	DIFFUSE_LIGHT = vec3(0.25);
 }
