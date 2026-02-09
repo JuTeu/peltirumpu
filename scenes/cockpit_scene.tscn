@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dq4nuxs8j7k7c" path="res://scripts/cockpit.gd" id="1_snf4n"]
 [ext_resource type="Script" uid="uid://c62yr4dfg8jsw" path="res://scripts/player.gd" id="1_ygba6"]
+[ext_resource type="Texture2D" uid="uid://c1d1r48fe0gkc" path="res://assets/sprites/hand_sprite_open.png" id="2_3pq34"]
 [ext_resource type="PackedScene" uid="uid://bpveeo858git0" path="res://scenes/fuse_drawer.tscn" id="2_beaq8"]
 [ext_resource type="Script" uid="uid://c0ijfetnahjav" path="res://scripts/screen.gd" id="2_ruw74"]
 [ext_resource type="Script" uid="uid://dn58cqtcix2hl" path="res://scripts/light_bulb.gd" id="3_5aw4l"]
 [ext_resource type="Environment" uid="uid://c1wdyqqo20o84" path="res://scenes/cockpit_scene.tres" id="3_ae7ma"]
 [ext_resource type="PackedScene" uid="uid://cpmlyx0cxwri8" path="res://scenes/lever.tscn" id="3_eqbwn"]
+[ext_resource type="Texture2D" uid="uid://c41lpocbannp7" path="res://assets/sprites/hand_sprite_closed.png" id="3_pd8aa"]
 [ext_resource type="Shader" uid="uid://dtmhw7qut7inr" path="res://shaders/screen.gdshader" id="5_4dgta"]
 [ext_resource type="PackedScene" uid="uid://vvw8tjenba8b" path="res://scenes/interactable_button.tscn" id="6_03le6"]
 [ext_resource type="PackedScene" uid="uid://bjb3bj612fto2" path="res://scenes/fuse.tscn" id="6_27ymm"]
@@ -192,7 +194,12 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=316921116]
+[node name="CrossHair" type="Control" parent="CanvasLayer/Control" unique_id=1460047133]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/CrossHair" unique_id=316921116]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 5.0
@@ -200,13 +207,45 @@ offset_right = 21.0
 offset_bottom = 35.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control" unique_id=1981763022]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/CrossHair" unique_id=1981763022]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 19.0
 offset_right = 35.0
 offset_bottom = 21.0
 color = Color(0, 0, 0, 1)
+
+[node name="HandOpen" type="TextureRect" parent="CanvasLayer/Control" unique_id=167059715]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("2_3pq34")
+
+[node name="HandClosed" type="TextureRect" parent="CanvasLayer/Control" unique_id=1072560466]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_pd8aa")
 
 [node name="Player" type="Node3D" parent="." unique_id=1278352719]
 script = ExtResource("1_ygba6")

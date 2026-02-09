@@ -2,6 +2,9 @@ class_name Player extends Node3D
 
 @onready var ray_cast: RayCast3D = $Camera3D/RayCast3D
 @onready var camera: Camera3D = $Camera3D
+@onready var _hand_open: TextureRect = $"../CanvasLayer/Control/HandOpen"
+@onready var _hand_closed: TextureRect = $"../CanvasLayer/Control/HandClosed"
+@onready var _cross_hair: Control = $"../CanvasLayer/Control/CrossHair"
 var rot_x := 0.0
 var rot_y := 0.0
 var camera_locked := false
@@ -17,6 +20,7 @@ func _ready() -> void:
 func start_interact() -> void:
 	var new_interactable := ray_cast.get_collider() as Interactable
 	if (not new_interactable): return
+	_hand_closed.visible = true
 	new_interactable.start_interaction()
 	if new_interactable.should_lock_camera:
 		camera_locked = true
@@ -26,6 +30,7 @@ func end_interact() -> void:
 	interactable.end_interaction()
 	camera_locked = false
 	interactable = null
+	_hand_closed.visible = false
 
 func _process(delta: float) -> void:
 	camera.rotation = Vector3(-rot_y, -rot_x, 0.0)
@@ -35,6 +40,8 @@ func _process(delta: float) -> void:
 		end_interact()
 	if (interactable):
 		interactable.update(mouse_movement, camera)
+	_hand_open.visible = ray_cast.get_collider() as Interactable != null && !_hand_closed.visible
+	_cross_hair.visible = !(_hand_open.visible || _hand_closed.visible)
 	
 	mouse_just_pressed = false
 	mouse_just_released = false
